@@ -1,7 +1,7 @@
 # Hugo configuration file
 title: Рефакторинг жизни
 
-baseURL: https://dshilin.github.io/
+# baseURL: https://dshilin.github.io/
 
 # import hextra as module
 module:
