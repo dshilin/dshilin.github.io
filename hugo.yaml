@@ -21,14 +21,14 @@ markup:
 menu:
   main:
     - name: Блог
-      pageRef: blog
+      pageRef: /blog
       weight: 1
     # - name: Docs
     #   pageRef: /docs
-    #   weight: 2
+    #   weight: 1
     - name: Автор
-      pageRef: about
-      weight: 3
+      pageRef: /about
+      weight: 2
     # - name: Contact ↗
     #   url: "https://github.com/imfing"
     #   weight: 3
@@ -38,10 +38,14 @@ menu:
         type: search
     - name: GitHub
       weight: 5
-      url: "https://github.com/snayp"
+      url: "https://github.com/dshilin"
       params:
         icon: github
-
+    # - name: Twitter
+    #   weight: 6
+    #   url: "https://twitter.com/"
+    #   params:
+    
 params:
   navbar:
     displayTitle: true
