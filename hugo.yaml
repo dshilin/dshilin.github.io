@@ -50,6 +50,10 @@ params:
   navbar:
     displayTitle: true
     displayLogo: true
+    logo:
+      path: images/logo.webp
+      width: 48
+      height: 48
 
   footer:
     displayCopyright: true
