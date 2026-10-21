@@ -4,8 +4,7 @@
   <section class="journal-hero" aria-labelledby="home-title">
     <div class="journal-hero-copy">
       <p class="journal-eyebrow"><span aria-hidden="true"></span>Личный блог Дмитрия</p>
-      <h1 id="home-title">Рефакторинг <br><span>жизни</span></h1>
-      <p class="journal-tagline">{{ .Params.tagline }}</p>
+      <h1 id="home-title">{{ .Params.tagline }}</h1>
       <div class="journal-intro">{{ .Content }}</div>
       <div class="journal-actions">
         <a class="journal-button" href="{{ "blog/" | relURL }}">Читать блог <span aria-hidden="true">→</span></a>
