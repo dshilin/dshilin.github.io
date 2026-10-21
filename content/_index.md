@@ -1,17 +1,17 @@
 ---
-title: My Site
+title: Рефакторинг жизни
+description: Технические статьи и философские размышления Дмитрия — о технологиях, профессиональном пути и изменениях в жизни.
 toc: false
+tagline: Как осваивать новое и понимать, куда и зачем я иду.
+topics:
+  - title: Технические статьи
+    description: Инструменты, практические задачи и опыт освоения нового.
+    label: Практика
+    icon: code
+  - title: Философские размышления
+    description: Работа, привычки и вопросы о том, что имеет смысл для меня.
+    label: Размышления
+    icon: thought
 ---
 
-This is the landing page.
-
-## Explore
-
-{{< cards >}}
-  {{< card link="docs" title="Docs" icon="book-open" >}}
-  {{< card link="about" title="About" icon="user" >}}
-{{< /cards >}}
-
-## Documentation
-
-For more information, visit [Hextra](https://imfing.github.io/hextra).
+Я Дмитрий. Здесь я пишу о технологиях, профессиональном пути и изменениях в жизни. Разбираюсь в новых инструментах и делюсь тем, чему учусь.

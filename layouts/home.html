@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+<main id="content" class="journal-home">
+  <section class="journal-hero" aria-labelledby="home-title">
+    <div class="journal-hero-copy">
+      <p class="journal-eyebrow"><span aria-hidden="true"></span>Личный блог Дмитрия</p>
+      <h1 id="home-title">Рефакторинг <br><span>жизни</span></h1>
+      <p class="journal-tagline">{{ .Params.tagline }}</p>
+      <div class="journal-intro">{{ .Content }}</div>
+      <div class="journal-actions">
+        <a class="journal-button" href="{{ "blog/" | relURL }}">Читать блог <span aria-hidden="true">→</span></a>
+        <a class="journal-about" href="{{ "about/" | relURL }}">Об авторе <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="journal-art" aria-hidden="true">
+      <div class="journal-art-orbit"></div>
+      <img src="{{ "images/logo.webp" | relURL }}" alt="" width="320" height="320" fetchpriority="high">
+      <span class="journal-art-caption">Учиться. Пробовать. Переосмысливать.</span>
+    </div>
+  </section>
+  <section class="journal-topics" aria-labelledby="topics-title">
+    <div class="journal-section-heading"><p class="journal-eyebrow">Два направления одного поиска</p><h2 id="topics-title">О чём этот блог</h2></div>
+    <div class="journal-topic-grid">
+      {{ range .Params.topics }}
+      <div class="journal-topic journal-topic-{{ .icon }}">
+        <div class="journal-topic-meta"><span>{{ .label }}</span><span class="journal-topic-symbol" aria-hidden="true">{{ if eq .icon "code" }}&lt;/&gt;{{ else }}✳{{ end }}</span></div>
+        <h3>{{ .title }}</h3><p>{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  <section class="journal-latest" aria-labelledby="latest-title">
+    <div class="journal-section-heading journal-latest-heading"><h2 id="latest-title">Последние публикации</h2><a href="{{ "blog/" | relURL }}">Весь блог <span aria-hidden="true">→</span></a></div>
+    {{ partial "journal-posts.html" (dict "pages" (first 3 (where .Site.RegularPages "Section" "blog").ByDate.Reverse)) }}
+  </section>
+</main>
+{{ end }}

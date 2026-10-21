@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+<main id="content" class="journal-home journal-blog">
+  <header class="journal-blog-header">
+    <p class="journal-eyebrow">Рефакторинг жизни</p>
+    <h1>{{ .Title }}</h1>
+    <div class="journal-intro">{{ .Content }}</div>
+  </header>
+  {{ $paginator := .Paginate .RegularPagesRecursive.ByDate.Reverse }}
+  {{ partial "journal-posts.html" (dict "pages" $paginator.Pages) }}
+  {{ if gt $paginator.TotalPages 1 }}{{ partial "components/blog-pager.html" $paginator }}{{ end }}
+</main>
+{{ end }}

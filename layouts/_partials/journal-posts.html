@@ -1,0 +1,13 @@
+{{ if .pages }}
+<div class="journal-posts">
+  {{ range .pages }}
+  <article class="journal-post">
+    {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>{{ end }}
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p>{{ .Description | default (.Summary | plainify | truncate 180) }}</p>
+  </article>
+  {{ end }}
+</div>
+{{ else }}
+<div class="journal-empty"><span class="journal-empty-mark" aria-hidden="true">…</span><p>Первые статьи ещё готовятся.</p></div>
+{{ end }}
