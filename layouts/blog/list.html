@@ -4,6 +4,7 @@
   <header class="journal-blog-header">
     <h1>{{ .Title }}</h1>
     <div class="journal-intro">{{ .Content }}</div>
+    {{ with .Site.GetPage "/docs/python" }}<p><a href="{{ .RelPermalink }}">Python: QA и автоматизация <span aria-hidden="true">→</span></a></p>{{ end }}
   </header>
   {{ $paginator := .Paginate .RegularPagesRecursive.ByDate.Reverse }}
   {{ partial "journal-posts.html" (dict "pages" $paginator.Pages) }}

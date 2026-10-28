@@ -21,7 +21,7 @@
 .journal-eyebrow > span { width: 7px; height: 7px; border-radius: 50%; background: var(--journal-accent); }
 .journal-hero h1 { max-width: 630px; margin: 24px 0; font-size: clamp(32px, 3.8vw, 49px); font-weight: 650; line-height: 1.17; letter-spacing: -.045em; }
 .journal-intro { max-width: 500px; margin-top: 22px; font-size: 16px; line-height: 1.85; color: var(--journal-muted); }
-.journal-actions { display: flex; gap: 28px; align-items: center; margin-top: 32px; }
+.journal-actions { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 32px; }
 .journal-button { display: inline-flex; align-items: center; gap: 28px; padding: 14px 22px; background: var(--journal-accent); color: white; border-radius: 8px; font-size: 15px; font-weight: 600; }
 .dark .journal-button { color: #1c2448; }
 .journal-button:hover { filter: brightness(1.1); }

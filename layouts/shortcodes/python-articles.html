@@ -1,0 +1,15 @@
+{{- $pages := where .Site.RegularPages "Params.career_track" "python" -}}
+{{- if $pages -}}
+<div class="python-articles">
+  {{- range $pages.ByDate.Reverse }}
+  <article>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    {{ with .Params.competencies }}<p><strong>Навыки в разборе:</strong> {{ delimit . ", " }}.</p>{{ end }}
+    {{ if .Draft }}<p><em>Черновик — ожидает авторской проверки.</em></p>{{ end }}
+  </article>
+  {{- end }}
+</div>
+{{- else -}}
+<p>Разборы готовятся. Материалы появятся здесь после публикации.</p>
+{{- end -}}

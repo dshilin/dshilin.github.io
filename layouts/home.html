@@ -9,6 +9,7 @@
       <div class="journal-actions">
         <a class="journal-button" href="{{ "blog/" | relURL }}">Читать блог <span aria-hidden="true">→</span></a>
         <a class="journal-about" href="{{ "about/" | relURL }}">Об авторе <span aria-hidden="true">→</span></a>
+        {{ with .Site.GetPage "/docs/python" }}<a class="journal-about" href="{{ .RelPermalink }}">Python: QA и автоматизация <span aria-hidden="true">→</span></a>{{ end }}
       </div>
     </div>
     <div class="journal-art" aria-hidden="true">
