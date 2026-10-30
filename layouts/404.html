@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang | default "ru" }}" dir="{{ partial "utils/hugo-compat/language-direction.html" .Site.Language | default "ltr" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Страница не найдена — {{ .Site.Title }}</title>
+  <style>
+    :root { color-scheme: light; --ink: #202336; --muted: #62677c; --accent: #4058c8; --line: #e0e3ef; --surface: #f4f5fb; }
+    :root.dark { color-scheme: dark; --ink: #e9eaf5; --muted: #b5bad0; --accent: #a8b7ff; --line: #383d59; --surface: #23263a; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--surface); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { width: min(100%, 620px); padding: clamp(28px, 7vw, 64px); border: 1px solid var(--line); border-radius: 20px; background: Canvas; }
+    .code { margin: 0; color: var(--accent); font-size: 14px; font-weight: 700; letter-spacing: .12em; }
+    h1 { margin: 16px 0; font-size: clamp(28px, 6vw, 42px); line-height: 1.15; letter-spacing: -.035em; }
+    .message { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none; }
+    nav a:first-child { border-color: var(--accent); background: var(--accent); color: #fff; }
+    nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    nav a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    @media (prefers-color-scheme: dark) { :root:not(.light):not(.dark) { color-scheme: dark; --ink: #e9eaf5; --muted: #b5bad0; --accent: #a8b7ff; --line: #383d59; --surface: #23263a; } }
+  </style>
+  <script>
+    try {
+      const theme = localStorage.getItem("color-theme");
+      if (theme === "light" || theme === "dark") document.documentElement.classList.add(theme);
+    } catch (_) {}
+  </script>
+</head>
+<body>
+  <main id="content">
+    <p class="code">404</p>
+    <h1>Страница не найдена</h1>
+    <p class="message">Возможно, адрес устарел или в нём опечатка.</p>
+    <nav aria-label="Навигация">
+      <a href="{{ "/" | relURL }}">На главную</a>
+      <a href="{{ "/blog/" | relURL }}">Все статьи</a>
+    </nav>
+  </main>
+</body>
+</html>
