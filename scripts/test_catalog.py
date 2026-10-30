@@ -98,8 +98,9 @@ class CatalogTest(unittest.TestCase):
         write_page(content, "about.md", title="Fixture author")
         write_page(content, "blog/_index.md", title="Статьи")
         # Published children must work even when the redundant parent hub is hidden.
-        write_page(content, "docs/_index.md", title="Hidden docs", draft=True)
-        write_page(content, "docs/python/_index.md", title="Hidden Python hub", draft=True)
+        hidden = dict(draft=True, build=dict(render="never", list="never"), cascade=dict(sidebar=dict(hide=True)))
+        write_page(content, "docs/_index.md", title="Hidden docs", **hidden)
+        write_page(content, "docs/python/_index.md", title="Hidden Python hub", **hidden)
         published = [
             ("blog/review-blog.md", "2026-10-29", ["Alpha", "Beta", "pytest"], "Tech", True),
             ("docs/python/review-python.md", "2026-10-28", ["Alpha"], "Tech", True),
@@ -222,6 +223,19 @@ class CatalogTest(unittest.TestCase):
         self.assertIn("/categories/tech/", hrefs)
         self.assertIn("/tags/alpha/", hrefs)
         self.assertIn("/tags/beta/", hrefs)
+
+    def test_hidden_hubs_have_no_pages_or_dead_article_navigation(self):
+        for mode, prefix in [("production", ""), ("drafts", ""), ("subpath", "/notes")]:
+            output = self.outputs[mode]
+            self.assertFalse((output / "docs/index.html").exists())
+            self.assertFalse((output / "docs/python/index.html").exists())
+            article = self.doc(mode, "docs/python/review-python/index.html")
+            main = article.by_id("content")
+            links = [n.attrs.get("href") for n in main.find(lambda n: n.tag == "a")]
+            self.assertIn(prefix + "/blog/", links, "Article must have a working route back to the catalog")
+            for href in links:
+                self.assertTrue(href, "Hidden ancestors must not create empty breadcrumb links")
+                self.assertNotIn(href, [prefix + "/docs/", prefix + "/docs/python/"])
 
     def test_photo_block_with_zero_one_and_two_posts_and_literal_markup(self):
         for count in (0, 1, 2):

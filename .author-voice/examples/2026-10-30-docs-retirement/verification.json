@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-30",
+  "builds": [
+    {
+      "html_files": 7,
+      "local_references_checked": 117,
+      "errors": [],
+      "mode": "production"
+    },
+    {
+      "html_files": 19,
+      "local_references_checked": 384,
+      "errors": [],
+      "mode": "drafts"
+    }
+  ],
+  "integration_tests": {
+    "command": "python scripts/test_catalog.py",
+    "count": 9,
+    "result": "passed",
+    "fixtures": ".superpowers/site-review/catalog-9496cffa"
+  },
+  "scope": "Rendered route retirement, draft visibility, local HTML links/assets/anchors and XML sitemap; not full legal or visual approval."
+}

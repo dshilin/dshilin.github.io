@@ -1,0 +1,27 @@
+[
+  {
+    "source": "content/docs/_index.md",
+    "snapshot": "sources/content/docs/_index.md",
+    "sha256": "9023335bf764933a2fb586f634a2971c435470d03f8a18c184704262f71ca670"
+  },
+  {
+    "source": "content/docs/python/_index.md",
+    "snapshot": "sources/content/docs/python/_index.md",
+    "sha256": "b2a6605aeea3b85099f2cc9a5d33a8f487607c88fca59ba7f705a169fdd8020b"
+  },
+  {
+    "source": "content/docs/first-page.md",
+    "snapshot": "sources/content/docs/first-page.md",
+    "sha256": "e7a904b4ad59d8e87140fd175d004e41d1ed8789d43ef89a8e33f70dc402f7c9"
+  },
+  {
+    "source": "content/docs/folder/_index.md",
+    "snapshot": "sources/content/docs/folder/_index.md",
+    "sha256": "53d5aafc50769ce84576afbbb79f20dbd9cced4cfebba9cd20c6461d16bc7acf"
+  },
+  {
+    "source": "content/docs/folder/leaf.md",
+    "snapshot": "sources/content/docs/folder/leaf.md",
+    "sha256": "c481c774e43e46c55db9964879200f3ce4be1bce7b196fdef103c7905093d0ae"
+  }
+]

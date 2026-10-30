@@ -1,0 +1,22 @@
+{{- $page := .page -}}
+{{- $enabled := .enable | default false -}}
+{{- if isset $page.Params "breadcrumbs" -}}{{- $enabled = $page.Params.breadcrumbs -}}{{- end -}}
+{{- if $enabled -}}
+  {{- $parents := slice -}}
+  {{- range $page.Ancestors.Reverse -}}
+    {{- if and (not .IsHome) .RelPermalink -}}
+      {{- $parents = $parents | append . -}}
+    {{- end -}}
+  {{- end -}}
+  <nav class="journal-breadcrumb" aria-label="Навигация по статье">
+    {{- if and (eq (len $parents) 0) (eq $page.Params.career_track "python") -}}
+      {{- with $page.Site.GetPage "/blog" -}}
+        <a href="{{ .RelPermalink }}">Все статьи</a><span aria-hidden="true">›</span>
+      {{- end -}}
+    {{- end -}}
+    {{- range $parents -}}
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a><span aria-hidden="true">›</span>
+    {{- end -}}
+    <span aria-current="page">{{ $page.LinkTitle }}</span>
+  </nav>
+{{- end -}}
