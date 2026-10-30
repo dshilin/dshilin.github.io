@@ -11,3 +11,17 @@
 </nav>
   {{- end }}
 {{- end -}}
+{{- $legalPages := slice ($page.Site.GetPage "/terms") ($page.Site.GetPage "/privacy") -}}
+{{- $visibleLegalPages := slice -}}
+{{- range $legalPages -}}
+  {{- with . -}}
+    {{- if not .Draft -}}
+      {{- $visibleLegalPages = $visibleLegalPages | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $visibleLegalPages }}
+<nav class="journal-legal-footer" aria-label="Правовая информация">
+  {{- range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end -}}
+</nav>
+{{- end }}

@@ -2,6 +2,9 @@
 title: Резюме
 draft: true
 toc: false
+menu:
+  main:
+    weight: 3
 ---
 
 # Дмитрий Шилин
