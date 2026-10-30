@@ -1,0 +1,12 @@
+{{- $terms := partial "journal-terms.html" (dict "site" .site "pages" .pages "taxonomy" "tags") -}}
+{{- with $terms }}
+<section id="journal-topic-cloud" class="journal-topic-cloud" aria-labelledby="journal-topics-heading">
+  <h2 id="journal-topics-heading">Темы</h2>
+  <ul>
+    {{- range . }}
+    {{- $weight := math.Min 4 .count -}}
+    <li><a class="journal-topic-weight-{{ $weight }}" href="{{ .page.RelPermalink }}" data-topic="{{ .name }}" data-count="{{ .count }}">{{ .name }} <span>({{ .count }})</span></a></li>
+    {{- end }}
+  </ul>
+</section>
+{{- end -}}

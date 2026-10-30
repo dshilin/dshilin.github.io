@@ -1,0 +1,8 @@
+{{- $terms := slice -}}
+{{- range (index .site.Taxonomies .taxonomy) -}}
+  {{- $count := len (intersect $.pages .Pages) -}}
+  {{- if gt $count 0 -}}
+    {{- $terms = $terms | append (dict "page" .Page "name" .Page.LinkTitle "count" $count) -}}
+  {{- end -}}
+{{- end -}}
+{{- return (sort $terms "name") -}}

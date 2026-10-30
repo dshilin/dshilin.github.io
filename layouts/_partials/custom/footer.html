@@ -1,0 +1,6 @@
+{{- $page := .context -}}
+{{- if and $page.IsPage (or (eq $page.Section "blog") (eq $page.Params.career_track "python")) -}}
+<nav class="journal-article-taxonomy-footer" aria-label="Категории и темы публикации">
+  {{ partial "journal-post-taxonomies.html" $page }}
+</nav>
+{{- end -}}

@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+<main id="content" class="journal-home journal-blog">
+  <header class="journal-blog-header">
+    {{ with .Site.GetPage "/blog" }}<a href="{{ .RelPermalink }}">Все статьи</a>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}<div class="journal-intro">{{ . }}</div>{{ end }}
+  </header>
+  {{ $articles := partial "journal-articles.html" .Site }}
+  {{ $matching := intersect $articles .Pages }}
+  {{ $paginator := .Paginate $matching }}
+  {{ partial "journal-posts.html" (dict "pages" $paginator.Pages) }}
+  {{ if gt $paginator.TotalPages 1 }}{{ partial "components/blog-pager.html" $paginator }}{{ end }}
+</main>
+{{ end }}

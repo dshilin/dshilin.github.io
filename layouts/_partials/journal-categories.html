@@ -1,0 +1,9 @@
+{{- $categories := partial "journal-terms.html" (dict "site" .site "pages" .pages "taxonomy" "categories") -}}
+{{- with $categories }}
+<nav id="journal-categories" class="journal-categories" aria-label="Категории статей">
+  {{- with $.site.GetPage "/blog" }}<a href="{{ .RelPermalink }}">Все статьи</a>{{ end }}
+  {{- range . }}
+  <a href="{{ .page.RelPermalink }}" data-category="{{ .name }}" data-count="{{ .count }}">{{ .name }} <span>({{ .count }})</span></a>
+  {{- end }}
+</nav>
+{{- end -}}

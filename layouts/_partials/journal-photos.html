@@ -1,0 +1,32 @@
+{{- $photos := slice -}}
+{{- range .pages -}}
+  {{- $post := . -}}
+  {{- range .Params.photos -}}
+    {{- $photo := . -}}
+    {{- if and (eq .kind "photo") (not .ai_generated) .src .alt -}}
+      {{- with $post.Resources.Get .src -}}
+        {{- if eq .MediaType.MainType "image" -}}
+          {{- $image := .Fit "960x720" -}}
+          {{- $photos = $photos | append (dict "post_url" $post.RelPermalink "post_title" $post.Title "src" $image.RelPermalink "alt" $photo.alt "width" $image.Width "height" $image.Height) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $photos }}
+<section class="journal-photo-section" aria-label="Фотографии из публикаций">
+  <div id="journal-photo-grid" class="journal-photo-grid">
+    {{- $seen := slice -}}
+    {{- range $photos -}}
+      {{- if and (lt (len $seen) 3) (not (in $seen .post_url)) -}}
+        {{- $seen = $seen | append .post_url -}}
+        <a href="{{ .post_url }}"><figure><img src="{{ .src }}" alt="{{ .alt }}" width="{{ .width }}" height="{{ .height }}" loading="lazy" decoding="async"><figcaption>{{ .post_title }}</figcaption></figure></a>
+      {{- end -}}
+    {{- end }}
+  </div>
+  <script type="application/json" data-journal-photo-data>{{ $photos | jsonify | safeJS }}</script>
+</section>
+{{- with resources.Get "js/journal-photos.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end -}}
+{{- end -}}

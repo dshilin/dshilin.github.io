@@ -6,6 +6,8 @@ draft: true
 description: ''
 career_track: python
 competencies: []
+categories:
+  - Технические статьи
 tags:
   - Python
 ---
@@ -35,6 +37,6 @@ tags:
 
 ## Связанные материалы
 
-[Python: QA и автоматизация]({{< relref "/docs/python" >}})
+[Все статьи]({{< relref "/blog" >}})
 
 [Официальные источники и связанный существующий разбор — после проверки ссылок.]

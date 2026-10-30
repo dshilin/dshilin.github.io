@@ -1,0 +1,3 @@
+{{- $blog := where .RegularPages "Section" "blog" -}}
+{{- $python := where .RegularPages "Params.career_track" "python" -}}
+{{- return (union $blog $python).ByDate.Reverse -}}

@@ -1,0 +1,13 @@
+{{ define "main" }}
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+<main id="content" class="journal-home journal-blog">
+  <header class="journal-blog-header"><h1>{{ if eq .Data.Plural "tags" }}Темы{{ else if eq .Data.Plural "categories" }}Категории{{ else }}{{ .Title }}{{ end }}</h1></header>
+  {{ $terms := partial "journal-terms.html" (dict "site" .Site "pages" (partial "journal-articles.html" .Site) "taxonomy" .Data.Plural) }}
+  {{ if $terms }}
+  <ul class="journal-taxonomy-list">
+    {{ range $terms }}<li><a href="{{ .page.RelPermalink }}">{{ .name }} <span>({{ .count }})</span></a></li>{{ end }}
+  </ul>
+  {{ else }}<p class="journal-intro">Первые статьи ещё готовятся.</p>{{ end }}
+  {{ with .Site.GetPage "/blog" }}<p class="journal-return"><a href="{{ .RelPermalink }}">Все статьи →</a></p>{{ end }}
+</main>
+{{ end }}

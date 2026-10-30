@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-30",
+  "scope": "Approved home/about copy in source and rendered HTML; Terms draft isolation. No visual or full-site acceptance.",
+  "results": [
+    {
+      "mode": "production",
+      "hugo_exit": 0,
+      "approved_home_text": true,
+      "approved_about_text": true,
+      "terms_draft_visibility": true
+    },
+    {
+      "mode": "drafts",
+      "hugo_exit": 0,
+      "approved_home_text": true,
+      "approved_about_text": true,
+      "terms_draft_visibility": true
+    }
+  ],
+  "logs": "C:\\Users\\user\\Documents\\Codex\\dshilin.github.io\\.superpowers\\site-review\\approved-2026-10-30"
+}

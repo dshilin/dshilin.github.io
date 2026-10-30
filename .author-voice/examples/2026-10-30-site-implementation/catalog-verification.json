@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-30",
+  "feature": "Approved article catalog",
+  "builds": [
+    {
+      "mode": "production",
+      "exit_code": 0,
+      "copy_matches": true,
+      "no_fake_photo_block": true,
+      "draft_visibility": true
+    },
+    {
+      "mode": "drafts",
+      "exit_code": 0,
+      "copy_matches": true,
+      "no_fake_photo_block": true,
+      "draft_visibility": true
+    }
+  ],
+  "integration_tests": {
+    "command": "python scripts/test_catalog.py",
+    "count": 8,
+    "result": "passed",
+    "fixture_outputs": ".superpowers/site-review/catalog-b670c359"
+  },
+  "browser_fixture_checks": {
+    "width": 390,
+    "horizontal_overflow": false,
+    "photo_grid_columns": 1,
+    "photo_cards": 3,
+    "distinct_photo_posts": 3,
+    "cloud_below_posts": true
+  },
+  "review": "Fresh independent read-only review: no critical, important or actionable minor findings. Supplemental Node selection/rendering smoke tests performed by reviewer.",
+  "limits": [
+    "Hugo 0.156.0 CI not executed",
+    "No deployment",
+    "Full-site cleanup and user review of other pages remain pending"
+  ],
+  "author_spelling_regression": {
+    "observed": "Pytest instead of pytest under Hugo default auto-capitalization",
+    "reproduced_with_test": true,
+    "fixed_by": "capitalizeListTitles: false",
+    "actual_preview_checked": true
+  }
+}

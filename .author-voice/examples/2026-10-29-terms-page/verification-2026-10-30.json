@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-30",
+  "scope": "Terms draft visibility and rendering; not whole-site or legal acceptance",
+  "results": [
+    {
+      "mode": "production",
+      "exit_code": 0,
+      "terms_html": false,
+      "sitemap_includes_terms": false
+    },
+    {
+      "mode": "drafts",
+      "exit_code": 0,
+      "terms_html": true,
+      "sitemap_includes_terms": true
+    }
+  ],
+  "logs": "C:\\Users\\user\\Documents\\Codex\\dshilin.github.io\\.superpowers\\site-review\\terms-2026-10-30"
+}

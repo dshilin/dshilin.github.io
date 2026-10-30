@@ -5,6 +5,8 @@
     {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>{{ end }}
     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
     <p>{{ .Description | default (.Summary | plainify | truncate 180) }}</p>
+    {{ partial "journal-post-taxonomies.html" . }}
+    {{ if .Draft }}<p class="journal-draft-label">Черновик — ожидает авторской проверки.</p>{{ end }}
   </article>
   {{ end }}
 </div>

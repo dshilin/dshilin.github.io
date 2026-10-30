@@ -1,6 +1,7 @@
 # Hugo configuration file
 title: Рефакторинг жизни
 defaultContentLanguage: ru
+capitalizeListTitles: false
 
 # baseURL: https://dshilin.github.io/
 
@@ -19,9 +20,13 @@ markup:
   highlight:
     noClasses: false
 
+taxonomies:
+  category: categories
+  tag: tags
+
 menu:
   main:
-    - name: Блог
+    - name: Статьи
       pageRef: /blog
       weight: 1
     # - name: Docs

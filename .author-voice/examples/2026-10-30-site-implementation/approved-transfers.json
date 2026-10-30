@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-30",
+  "scope": "Transfer of explicitly approved home/about copy into local source. No deployment.",
+  "pages": [
+    {
+      "target": "content/_index.md",
+      "approved_source": ".author-voice\\examples\\2026-10-29-home-page\\05-home-prejudices-revision.md",
+      "sha256": "06f33c5708cdb9c32c432d226b964a60c3071214490ae7b2bbdb593337e03edf"
+    },
+    {
+      "target": "content/about.md",
+      "approved_source": ".author-voice\\examples\\2026-10-29-about-page\\04-about-biographical.md",
+      "sha256": "dcb4547e180251a9015b4ea428745cfe12981cfcc540b9fcea542c93136897ab"
+    }
+  ]
+}

@@ -4,10 +4,13 @@
   <header class="journal-blog-header">
     <h1>{{ .Title }}</h1>
     <div class="journal-intro">{{ .Content }}</div>
-    {{ with .Site.GetPage "/docs/python" }}<p><a href="{{ .RelPermalink }}">Python: QA и автоматизация <span aria-hidden="true">→</span></a></p>{{ end }}
   </header>
-  {{ $paginator := .Paginate .RegularPagesRecursive.ByDate.Reverse }}
+  {{ $articles := partial "journal-articles.html" .Site }}
+  {{ partial "journal-photos.html" (dict "pages" $articles) }}
+  {{ partial "journal-categories.html" (dict "site" .Site "pages" $articles) }}
+  {{ $paginator := .Paginate $articles }}
   {{ partial "journal-posts.html" (dict "pages" $paginator.Pages) }}
   {{ if gt $paginator.TotalPages 1 }}{{ partial "components/blog-pager.html" $paginator }}{{ end }}
+  {{ partial "journal-topic-cloud.html" (dict "site" .Site "pages" $articles) }}
 </main>
 {{ end }}

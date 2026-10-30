@@ -1,0 +1,16 @@
+{{- $categories := .GetTerms "categories" -}}
+{{- $topics := .GetTerms "tags" -}}
+{{- if or $categories $topics -}}
+<div class="journal-post-taxonomies">
+  {{- with $categories }}
+  <span class="journal-meta-group"><span class="journal-meta-label">Категории:</span>
+    {{- range . }} <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end -}}
+  </span>
+  {{- end }}
+  {{- with $topics }}
+  <span class="journal-meta-group"><span class="journal-meta-label">Темы:</span>
+    {{- range . }} <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end -}}
+  </span>
+  {{- end }}
+</div>
+{{- end -}}
