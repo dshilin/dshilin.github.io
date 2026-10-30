@@ -1,0 +1,46 @@
+{{- $site := .Page.Site -}}
+{{- $allArticles := partial "journal-articles.html" $site -}}
+{{- $articles := $allArticles -}}
+{{- $articlePaths := slice -}}
+{{- range $articles -}}
+  {{- $articlePaths = $articlePaths | append .RelPermalink -}}
+{{- end -}}
+{{- $categories := partial "journal-terms.html" (dict "site" $site "pages" $articles "taxonomy" "categories") -}}
+{{- $topics := partial "journal-terms.html" (dict "site" $site "pages" $articles "taxonomy" "tags") -}}
+<nav class="journal-sitemap" aria-label="Карта сайта">
+  <section aria-labelledby="journal-sitemap-sections">
+    <h2 id="journal-sitemap-sections">Страницы</h2>
+    <ul class="journal-sitemap-list">
+      <li><a href="{{ $site.Home.RelPermalink }}">Главная</a></li>
+      {{- with $site.GetPage "/blog" }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+      {{- $pages := $site.RegularPages -}}
+      {{- range sort $pages "Title" -}}
+        {{- if not (in $articlePaths .RelPermalink) }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ if .Draft }} <span>(черновик)</span>{{ end }}</li>{{ end -}}
+      {{- end }}
+    </ul>
+  </section>
+  {{- with $categories }}
+  <section aria-labelledby="journal-sitemap-categories">
+    <h2 id="journal-sitemap-categories">Категории</h2>
+    <ul class="journal-sitemap-list">
+      {{- range . }}<li><a href="{{ .page.RelPermalink }}">{{ .name }}</a> <span>({{ .count }})</span></li>{{ end }}
+    </ul>
+  </section>
+  {{- end }}
+  {{- with $topics }}
+  <section aria-labelledby="journal-sitemap-topics">
+    <h2 id="journal-sitemap-topics">Темы</h2>
+    <ul class="journal-sitemap-list">
+      {{- range . }}<li><a href="{{ .page.RelPermalink }}">{{ .name }}</a> <span>({{ .count }})</span></li>{{ end }}
+    </ul>
+  </section>
+  {{- end }}
+  {{- with $articles }}
+  <section aria-labelledby="journal-sitemap-articles">
+    <h2 id="journal-sitemap-articles">Публикации</h2>
+    <ul class="journal-sitemap-list">
+      {{- range . }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ if .Draft }} <span>(черновик)</span>{{ end }}</li>{{ end }}
+    </ul>
+  </section>
+  {{- end }}
+</nav>

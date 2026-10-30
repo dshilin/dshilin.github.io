@@ -4,3 +4,10 @@
   {{ partial "journal-post-taxonomies.html" $page }}
 </nav>
 {{- end -}}
+{{- with $page.Site.GetPage "/sitemap" -}}
+  {{- if not .Draft }}
+<nav class="journal-sitemap-footer" aria-label="Дополнительные страницы">
+  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+</nav>
+  {{- end }}
+{{- end -}}
