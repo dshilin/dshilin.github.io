@@ -8,3 +8,9 @@ output/playwright/
 .vscode/
 .frontmatter
 .kilo
+
+# Local source material for the public stock-report example
+/content/docs/python/123_123.xlsx
+/content/docs/python/clean_xls.md
+/content/docs/python/clean_xls_analysis.md
+__pycache__/

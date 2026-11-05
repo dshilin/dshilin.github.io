@@ -3,6 +3,10 @@ title: Рефакторинг жизни
 defaultContentLanguage: ru
 capitalizeListTitles: false
 
+# Private source material is excluded from production and draft previews.
+ignoreFiles:
+  - '(123_123\.xlsx|clean_xls(_analysis)?\.md)$'
+
 # baseURL: https://dshilin.github.io/
 
 # import hextra as module

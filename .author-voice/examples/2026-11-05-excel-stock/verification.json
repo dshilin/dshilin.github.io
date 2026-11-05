@@ -1,0 +1,19 @@
+{
+  "source_unchanged": true,
+  "source_specific_strings_checked": 3929,
+  "source_specific_strings_remaining": 0,
+  "package_parts_each": 7,
+  "properties_comments_drawings_external_links": "absent",
+  "input_rows": 7697,
+  "output_rows": 600,
+  "input_products": 1881,
+  "output_products": 371,
+  "removed_products": 1510,
+  "removed_rows": 7097,
+  "remaining_expense_orders": 0,
+  "input_merges": 7687,
+  "output_merges": 590,
+  "styles_row_heights_grouping_and_merges": "verified",
+  "product_and_unit_balances": "verified",
+  "reader": "openpyxl 3.1.5"
+}
